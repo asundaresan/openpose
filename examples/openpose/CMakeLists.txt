@@ -15,6 +15,11 @@ foreach(EXAMPLE_FILE ${EXAMPLE_FILES})
   add_executable(${EXE_NAME} ${EXAMPLE_FILE})
   target_link_libraries( ${EXE_NAME} openpose ${GLOG_LIBRARY} ${GFLAGS_LIBRARY} ${Caffe_LIBS} ${MKL_LIBS} ${GLUT_LIBRARY} ${SPINNAKER_LIB} ${OpenCL_LIBRARIES})
   
+  install(TARGETS ${SOURCE_NAME}.bin
+      RUNTIME DESTINATION bin
+      LIBRARY DESTINATION lib
+      ARCHIVE DESTINATION lib/openpose)
+
   if (WIN32)
     set_property(TARGET ${EXE_NAME} PROPERTY FOLDER "Examples")
     configure_file(${CMAKE_SOURCE_DIR}/cmake/OpenPose${CL}.vcxproj.user
