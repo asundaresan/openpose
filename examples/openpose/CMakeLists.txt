@@ -9,5 +9,8 @@ foreach(EXAMPLE_FILE ${EXAMPLE_FILES})
   target_link_libraries( ${SOURCE_NAME}.bin
       openpose ${GLOG_LIBRARY} ${GFLAGS_LIBRARY} ${Caffe_LIBS}
   )
-
+  install(TARGETS ${SOURCE_NAME}.bin
+      RUNTIME DESTINATION bin
+      LIBRARY DESTINATION lib
+      ARCHIVE DESTINATION lib/openpose)
 endforeach()
